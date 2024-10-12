@@ -5,8 +5,6 @@ from typing import Dict, Any
 import pandas as pd
 import hashlib
 from dataclasses import dataclass, field
-import json
-import os
 
 @dataclass
 class Event:
@@ -14,57 +12,16 @@ class Event:
     description: str
     is_new: bool = True
 
-    def to_dict(self):
-        return {
-            "date": self.date.isoformat(),
-            "description": self.description,
-            "is_new": self.is_new
-        }
-
-    @classmethod
-    def from_dict(cls, data):
-        return cls(
-            date=datetime.date.fromisoformat(data["date"]),
-            description=data["description"],
-            is_new=data["is_new"]
-        )
-
 @dataclass
 class DataStore:
     etkinlikler: Dict[str, Event] = field(default_factory=dict)
     duyurular: Dict[str, Event] = field(default_factory=dict)
     haberler: Dict[str, Event] = field(default_factory=dict)
 
-    def to_dict(self):
-        return {
-            "etkinlikler": {k: v.to_dict() for k, v in self.etkinlikler.items()},
-            "duyurular": {k: v.to_dict() for k, v in self.duyurular.items()},
-            "haberler": {k: v.to_dict() for k, v in self.haberler.items()}
-        }
-
-    @classmethod
-    def from_dict(cls, data):
-        return cls(
-            etkinlikler={k: Event.from_dict(v) for k, v in data["etkinlikler"].items()},
-            duyurular={k: Event.from_dict(v) for k, v in data["duyurular"].items()},
-            haberler={k: Event.from_dict(v) for k, v in data["haberler"].items()}
-        )
-
 @dataclass
 class AppState:
     data_store: DataStore = field(default_factory=DataStore)
     is_admin: bool = False
-
-def save_data(data_store: DataStore):
-    with open("data.json", "w") as f:
-        json.dump(data_store.to_dict(), f)
-
-def load_data() -> DataStore:
-    if os.path.exists("data.json"):
-        with open("data.json", "r") as f:
-            data = json.load(f)
-        return DataStore.from_dict(data)
-    return DataStore()
 
 def hash_password(password: str) -> str:
     return hashlib.sha256(password.encode()).hexdigest()
@@ -161,20 +118,26 @@ def add_item(date: datetime.date, text: str, data_dict: Dict[str, Event]) -> Non
     else:
         data_dict[date_str] = Event(date, text)
         st.success(f"Eklendi: {date} - {text}")
-        save_data(st.session_state.app_state.data_store)
+
+def delete_item(date_str: str, data_dict: Dict[str, Event]) -> None:
+    if date_str in data_dict:
+        del data_dict[date_str]
+        st.success(f"Silindi: {date_str}")
+    else:
+        st.warning(f"Bu tarih bulunamadı: {date_str}")
 
 def main():
     st.set_page_config(page_title="ARDEK Takvimi", layout="wide", initial_sidebar_state="collapsed")
 
     if 'app_state' not in st.session_state:
-        st.session_state.app_state = AppState(data_store=load_data())
+        st.session_state.app_state = AppState()
 
     app_state = st.session_state.app_state
 
     st.title("ARDEK Etkinlikler, Duyurular ve Haberler Takvimi")
 
     menu = ["Etkinlikler", "Duyurular", "Haberler"]
-    choice = st.selectbox("Kategori Seçin", menu, index=0)  
+    choice = st.selectbox("Kategori Seçin", menu, index=0)  # Default olarak Etkinlikler seçili
 
     col1, col2 = st.columns([2, 3])
 
@@ -196,17 +159,22 @@ def main():
                 if st.button("Ekle"):
                     add_item(date, text, data_dict)
 
-        with st.expander(f"Mevcut {choice}", expanded=True):
-            if data_dict:
-                for date_str, event in sorted(data_dict.items(), key=lambda x: x[1].date):
-                    date = event.date.strftime('%d.%m.%Y')
-                    text_color = "#FF4B4B" if event.is_new else "#000000"
-                    st.markdown(f"<h4 style='color: {text_color};'>{date}</h4>", unsafe_allow_html=True)
-                    st.markdown(f"<p style='color: {text_color};'>{event.description}</p>", unsafe_allow_html=True)
-                    st.markdown("---")
-                    event.is_new = False
-            else:
-                st.info(f"Henüz {choice.lower()} eklenmemiş.")
+            with st.expander(f"Mevcut {choice}", expanded=True):
+                if data_dict:
+                    for date_str, event in sorted(data_dict.items(), key=lambda x: x[1].date):
+                        date = event.date.strftime('%d.%m.%Y')
+                        text_color = "#FF4B4B" if event.is_new else "#000000"
+                        st.markdown(f"<h4 style='color: {text_color};'>{date}</h4>", unsafe_allow_html=True)
+                        st.markdown(f"<p style='color: {text_color};'>{event.description}</p>", unsafe_allow_html=True)
+                        
+                        if app_state.is_admin:
+                            if st.button(f"Sil - {date}", key=date_str):
+                                delete_item(date_str, data_dict)
+                        
+                        st.markdown("---")
+                        event.is_new = False
+                else:
+                    st.info(f"Henüz {choice.lower()} eklenmemiş.")
 
     if not app_state.is_admin:
         st.sidebar.info("İçerik eklemek veya düzenlemek için admin girişi yapmalısınız.")
