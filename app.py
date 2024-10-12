@@ -149,19 +149,6 @@ def add_item(date: datetime.date, text: str, data_dict: Dict[str, Event]) -> Non
         data_dict[date_str] = Event(date, text)
         st.success(f"Eklendi: {date} - {text}")
         save_data(st.session_state.app_state.data_store)
-        
-        
-
-def delete_item(date_str: str, data_dict: Dict[str, Event]) -> None:
-    if date_str in data_dict:
-        del data_dict[date_str]
-        st.success(f"Silindi: {date_str}")
-        save_data(st.session_state.app_state.data_store)
-    else:
-        st.warning(f"Silinecek öğe bulunamadı: {date_str}")
-
-        
-
 def main():
     st.set_page_config(page_title="ARDEK Takvimi", layout="wide", initial_sidebar_state="collapsed")
     if 'app_state' not in st.session_state:
@@ -193,13 +180,6 @@ def main():
                     text_color = "#FF4B4B" if event.is_new else "#000000"
                     st.markdown(f"<h4 style='color: {text_color};'>{date}</h4>", unsafe_allow_html=True)
                     st.markdown(f"<p style='color: {text_color};'>{event.description}</p>", unsafe_allow_html=True)
-                    
-                    if app_state.is_admin:
-                        if st.button(f"Sil {date}", key=f"delete_{date_str}"):
-                            delete_item(date_str, data_dict)
-                        st.experimental_rerun()
-                    
-                    
                     st.markdown("---")
                     event.is_new = False
             else:
