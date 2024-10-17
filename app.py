@@ -7,8 +7,6 @@ import hashlib
 from dataclasses import dataclass, field
 import json
 import os
-import requests  # Add this import for GitHub API interaction
-
 @dataclass
 class Event:
     date: datetime.date
@@ -27,7 +25,6 @@ class Event:
             description=data["description"],
             is_new=data["is_new"]
         )
-
 @dataclass
 class DataStore:
     etkinlikler: Dict[str, Event] = field(default_factory=dict)
@@ -46,33 +43,104 @@ class DataStore:
             duyurular={k: Event.from_dict(v) for k, v in data["duyurular"].items()},
             haberler={k: Event.from_dict(v) for k, v in data["haberler"].items()}
         )
-
 @dataclass
 class AppState:
     data_store: DataStore = field(default_factory=DataStore)
     is_admin: bool = False
-
 def save_data(data_store: DataStore):
     with open("data.json", "w") as f:
         json.dump(data_store.to_dict(), f)
-    update_github(data_store)  # Update GitHub after saving data locally
-
 def load_data() -> DataStore:
     if os.path.exists("data.json"):
         with open("data.json", "r") as f:
             data = json.load(f)
         return DataStore.from_dict(data)
     return DataStore()
-
 def hash_password(password: str) -> str:
     return hashlib.sha256(password.encode()).hexdigest()
-
 def verify_password(input_password: str, hashed_password: str) -> bool:
     return hash_password(input_password) == hashed_password
-
 def create_calendar_html(year: int, month: int, data_dict: Dict[str, Event]):
-    # (Existing code for creating calendar HTML)
-    
+    cal = calendar.monthcalendar(year, month)
+    turkish_months = ["", "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
+    month_name = turkish_months[month]
+
+    html = f"""
+    <style>
+    .calendar {{
+        font-family: Arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }}
+    .calendar th, .calendar td {{
+        border: 1px solid #ddd;
+        padding: 4px;
+        text-align: center;
+    }}
+    .calendar th {{
+        background-color: #f2f2f2;
+    }}
+    .calendar td {{
+        height: 60px;
+        vertical-align: top;
+    }}
+    .day-number {{
+        font-size: 14px;
+        font-weight: bold;
+    }}
+    .event-dot {{
+        height: 8px;
+        width: 8px;
+        background-color: #4CAF50;
+        border-radius: 50%;
+        display: inline-block;
+        margin-left: 5px;
+    }}
+    .event-description {{
+        font-size: 10px;
+        color: #666;
+        margin-top: 2px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }}
+    .new-event {{
+        background-color: #FFFF99;
+    }}
+    </style>
+    <table class="calendar">
+    <tr><th colspan="7">{month_name} {year}</th></tr>
+    <tr>
+        <th>Pzt</th>
+        <th>Sal</th>
+        <th>Çar</th>
+        <th>Per</th>
+        <th>Cum</th>
+        <th>Cmt</th>
+        <th>Paz</th>
+    </tr>
+    """
+
+    for week in cal:
+        html += "<tr>"
+        for day in week:
+            if day != 0:
+                date = datetime.date(year, month, day)
+                date_str = date.isoformat()
+                event_html = ""
+                cell_style = ""
+                if date_str in data_dict:
+                    event = data_dict[date_str]
+                    event_class = "new-event" if event.is_new else ""
+                    event_html = f'<span class="event-dot"></span><div class="event-description {event_class}">{event.description[:15]}...</div>'
+                    cell_style = 'style="background-color: #FFFF99;"'
+                html += f'<td {cell_style}><div class="day-number">{day}</div>{event_html}</td>'
+            else:
+                html += '<td></td>'
+        html += "</tr>"
+
+    html += "</table>"
+    return html
 def add_item(date: datetime.date, text: str, data_dict: Dict[str, Event]) -> None:
     date_str = date.isoformat()
     if date_str in data_dict:
@@ -82,39 +150,8 @@ def add_item(date: datetime.date, text: str, data_dict: Dict[str, Event]) -> Non
         st.success(f"Eklendi: {date} - {text}")
         save_data(st.session_state.app_state.data_store)
         
-def update_github(data_store: DataStore):
-    token = "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"  # Your GitHub token
-    repo_owner = "umitcaninz"
-    repo_name = "takvim"
-    file_path = "data.json"
-    github_api_url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/contents/{file_path}"
 
-    # Read the current content to get the SHA for the update
-    headers = {
-        "Authorization": f"token {token}",
-        "Accept": "application/vnd.github.v3+json"
-    }
-    
-    response = requests.get(github_api_url, headers=headers)
-    if response.status_code == 200:
-        content_info = response.json()
-        sha = content_info['sha']
-        # Prepare the updated content
-        updated_content = json.dumps(data_store.to_dict())
-        # Create the update request
-        update_data = {
-            "message": "Update data.json from Streamlit app",
-            "content": updated_content.encode('utf-8').decode('latin1'),  # GitHub API expects base64 encoded content
-            "sha": sha
-        }
-        update_response = requests.put(github_api_url, headers=headers, json=update_data)
-        if update_response.status_code == 200:
-            st.success("Data.json GitHub'a güncellendi!")
-        else:
-            st.error("GitHub'a güncelleme başarısız oldu.")
-    else:
-        st.error("GitHub'dan mevcut içeriği alma başarısız oldu.")
-
+        
 def main():
     st.set_page_config(page_title="ARDEK Takvimi", layout="wide", initial_sidebar_state="collapsed")
     if 'app_state' not in st.session_state:
@@ -146,6 +183,7 @@ def main():
                     text_color = "#FF4B4B" if event.is_new else "#000000"
                     st.markdown(f"<h4 style='color: {text_color};'>{date}</h4>", unsafe_allow_html=True)
                     st.markdown(f"<p style='color: {text_color};'>{event.description}</p>", unsafe_allow_html=True)
+                    
                     st.markdown("---")
                     event.is_new = False
             else:
@@ -167,6 +205,5 @@ def main():
             st.success("Admin olarak giriş yapıldı")
             if st.button("Çıkış Yap"):
                 app_state.is_admin = False
-
 if __name__ == "__main__":
     main()
