@@ -55,7 +55,7 @@ class AppState:
 GITHUB_REPO = "umitcaninz/takvim"
 
 def get_github_file(file_path):
-    url = f"https://raw.githubusercontent.com/{GITHUB_REPO}/main/{file_path}"
+    url = f"https://raw.githubusercontent.com/{GITHUB_REPO}/blob/main/{file_path}"
     try:
         response = requests.get(url)
         response.raise_for_status()  # Hata durumunda istisna fırlatır
