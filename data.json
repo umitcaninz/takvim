@@ -1,5 +1,22 @@
 {
-  "etkinlikler": {},
-  "duyurular": {},
+  "etkinlikler": {
+    "2023-09-01": {
+      "date": "2023-09-01",
+      "description": "Yeni etkinlik",
+      "is_new": true
+    },
+    "2023-09-15": {
+      "date": "2023-09-15",
+      "description": "Diğer etkinlik",
+      "is_new": false
+    }
+  },
+  "duyurular": {
+    "2023-09-10": {
+      "date": "2023-09-10",
+      "description": "Yeni duyuru",
+      "is_new": true
+    }
+  },
   "haberler": {}
 }
