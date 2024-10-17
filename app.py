@@ -217,6 +217,7 @@ def main():
     menu = ["Etkinlikler", "Duyurular", "Haberler"]
     choice = st.selectbox("Kategori Seçin", menu, index=0)  
     col1, col2 = st.columns([2, 3])
+    
     with col1:
         st.header(choice)
         year = st.selectbox("Yıl", range(datetime.datetime.now().year, datetime.datetime.now().year + 5))
@@ -224,13 +225,17 @@ def main():
         month = st.selectbox("Ay", range(1, 13), index=9, format_func=lambda x: turkish_months[x-1])
         data_dict = getattr(app_state.data_store, choice.lower())
         calendar_html = create_calendar_html(year, month, data_dict)
-        st.components.v1.html(calendar_html, height=500, scrolling=True)
+        st.markdown(calendar_html, unsafe_allow_html=True)
+
     with col2:
-        st.subheader("Yeni Girdi Ekle")
-        input_date = st.date_input("Tarih", min_value=datetime.date.today())
-        input_text = st.text_area("Açıklama")
+        st.header("Ekle")
+        date_input = st.date_input("Tarih Seçin", datetime.date.today())
+        text_input = st.text_input("Açıklama Girin")
         if st.button("Ekle"):
-            add_item(input_date, input_text, data_dict)
+            if text_input:
+                add_item(date_input, text_input, getattr(app_state.data_store, choice.lower()))
+            else:
+                st.warning("Açıklama alanı boş olamaz.")
 
 if __name__ == "__main__":
     main()
