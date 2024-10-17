@@ -56,10 +56,14 @@ GITHUB_REPO = "umitcaninz/takvim"
 
 def get_github_file(file_path):
     url = f"https://raw.githubusercontent.com/{GITHUB_REPO}/main/{file_path}"
-    response = requests.get(url)
-    if response.status_code == 200:
+    try:
+        response = requests.get(url)
+        response.raise_for_status()  # Hata durumunda istisna fırlatır
         return response.text
-    return None
+    except requests.RequestException as e:
+        st.error(f"GitHub'dan dosya alınırken hata oluştu: {str(e)}")
+        st.error(f"URL: {url}")
+        return None
 
 def save_data(data_store: DataStore):
     with open("data.json", "w") as f:
@@ -69,8 +73,14 @@ def save_data(data_store: DataStore):
 def load_data() -> DataStore:
     content = get_github_file("data.json")
     if content:
-        data = json.loads(content)
-        return DataStore.from_dict(data)
+        try:
+            data = json.loads(content)
+            return DataStore.from_dict(data)
+        except json.JSONDecodeError as e:
+            st.error(f"JSON dosyası okunamadı: {str(e)}")
+            st.error(f"Dosya içeriği: {content}")
+    else:
+        st.warning("GitHub'dan data.json dosyası okunamadı. Boş bir veri yapısı kullanılıyor.")
     return DataStore()
 
 def hash_password(password: str) -> str:
@@ -81,6 +91,8 @@ def verify_password(input_password: str, hashed_password: str) -> bool:
 
 def create_calendar_html(year: int, month: int, data_dict: Dict[str, Event]):
     # Bu fonksiyon aynı kalacak, değişiklik yok
+    # Fonksiyonun içeriğini buraya ekleyin
+    pass
 
 def add_item(date: datetime.date, text: str, data_dict: Dict[str, Event]) -> None:
     date_str = date.isoformat()
