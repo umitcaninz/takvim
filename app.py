@@ -72,7 +72,7 @@ def verify_password(input_password: str, hashed_password: str) -> bool:
 
 def create_calendar_html(year: int, month: int, data_dict: Dict[str, Event]):
     # (Existing code for creating calendar HTML)
-
+    
 def add_item(date: datetime.date, text: str, data_dict: Dict[str, Event]) -> None:
     date_str = date.isoformat()
     if date_str in data_dict:
@@ -81,6 +81,7 @@ def add_item(date: datetime.date, text: str, data_dict: Dict[str, Event]) -> Non
         data_dict[date_str] = Event(date, text)
         st.success(f"Eklendi: {date} - {text}")
         save_data(st.session_state.app_state.data_store)
+        
 def update_github(data_store: DataStore):
     token = "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"  # Your GitHub token
     repo_owner = "umitcaninz"
