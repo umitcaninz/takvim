@@ -7,7 +7,6 @@ import hashlib
 from dataclasses import dataclass, field
 import json
 import os
-from streamlit_calendar import calendar
 
 @dataclass
 class Event:
@@ -73,29 +72,87 @@ def hash_password(password: str) -> str:
 def verify_password(input_password: str, hashed_password: str) -> bool:
     return hash_password(input_password) == hashed_password
 
-def create_calendar_events(data_dict):
-    calendar_events = []
-    for date_str, event in data_dict.items():
-        calendar_events.append({
-            "title": event.description,
-            "start": date_str,
-            "end": date_str,  # Adjust end date if needed
-            "backgroundColor": "#4CAF50" if event.is_new else "#666",
-            "borderColor": "#4CAF50" if event.is_new else "#666"
-        })
-    return calendar_events
+def create_calendar_html(year: int, month: int, data_dict: Dict[str, Event]):
+    cal = calendar.monthcalendar(year, month)
+    turkish_months = ["", "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
+    month_name = turkish_months[month]
 
-def create_calendar_options():
-    return {
-        "headerToolbar": {
-            "left": "today prev,next",
-            "center": "title",
-            "right": "dayGridMonth,timeGridWeek,timeGridDay"
-        },
-        "initialView": "dayGridMonth",
-        "editable": False,  # Set to True if you want to allow editing
-        "selectable": False  # Set to True if you want to allow selecting dates
-    }
+    html = f"""
+    <style>
+    .calendar {{
+        font-family: Arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }}
+    .calendar th, .calendar td {{
+        border: 1px solid #ddd;
+        padding: 4px;
+        text-align: center;
+    }}
+    .calendar th {{
+        background-color: #f2f2f2;
+    }}
+    .calendar td {{
+        height: 60px;
+        vertical-align: top;
+    }}
+    .day-number {{
+        font-size: 14px;
+        font-weight: bold;
+    }}
+    .event-dot {{
+        height: 8px;
+        width: 8px;
+        background-color: #4CAF50;
+        border-radius: 50%;
+        display: inline-block;
+        margin-left: 5px;
+    }}
+    .event-description {{
+        font-size: 10px;
+        color: #666;
+        margin-top: 2px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }}
+    .new-event {{
+        background-color: #FFFF99;
+    }}
+    </style>
+    <table class="calendar">
+    <tr><th colspan="7">{month_name} {year}</th></tr>
+    <tr>
+        <th>Pzt</th>
+        <th>Sal</th>
+        <th>Çar</th>
+        <th>Per</th>
+        <th>Cum</th>
+        <th>Cmt</th>
+        <th>Paz</th>
+    </tr>
+    """
+
+    for week in cal:
+        html += "<tr>"
+        for day in week:
+            if day != 0:
+                date = datetime.date(year, month, day)
+                date_str = date.isoformat()
+                event_html = ""
+                cell_style = ""
+                if date_str in data_dict:
+                    event = data_dict[date_str]
+                    event_class = "new-event" if event.is_new else ""
+                    event_html = f'<span class="event-dot"></span><div class="event-description {event_class}">{event.description[:15]}...</div>'
+                    cell_style = 'style="background-color: #FFFF99;"'
+                html += f'<td {cell_style}><div class="day-number">{day}</div>{event_html}</td>'
+            else:
+                html += '<td></td>'
+        html += "</tr>"
+
+    html += "</table>"
+    return html
 
 def add_item(date: datetime.date, text: str, data_dict: Dict[str, Event]) -> None:
     date_str = date.isoformat()
@@ -125,13 +182,21 @@ def main():
     with col1:
         st.header(choice)
         
-        data_dict = getattr(app_state.data_store, choice.lower())
-        calendar_events = create_calendar_events(data_dict)
-        calendar_options = create_calendar_options()
+        year = st.selectbox("Yıl", range(datetime.datetime.now().year, datetime.datetime.now().year + 5))
         
-        # Display the calendar
-        calendar_result = calendar(events=calendar_events, options=calendar_options)
-        st.write(calendar_result)
+        turkish_months = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
+        
+        month = st.selectbox("Ay", range(1, 13), index=9, format_func=lambda x: turkish_months[x-1])
+        
+        data_dict = getattr(app_state.data_store, choice.lower())
+        
+        # Display JSON Data
+        st.subheader("JSON Data")
+        st.json(data_dict)
+        
+        # Display Calendar
+        calendar_html = create_calendar_html(year, month, data_dict)
+        st.components.v1.html(calendar_html, height=500, scrolling=True)
 
     with col2:
         if app_state.is_admin:
