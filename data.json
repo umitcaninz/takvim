@@ -16,7 +16,16 @@
       "date": "2023-09-10",
       "description": "Yeni duyuru",
       "is_new": true
-    }
+    },
+  "2024-11-10": {
+  "date":"2024-11-10",
+    "description":"Duyuru deneme",
+    "is_new":false
+
+    
+  }
+
+    
   },
   "haberler": {}
 }
