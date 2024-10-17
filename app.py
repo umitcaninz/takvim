@@ -42,9 +42,9 @@ class DataStore:
     @classmethod
     def from_dict(cls, data):
         return cls(
-            etkinlikler={k: Event.from_dict(v) for k, v in data["etkinlikler"].items()},
-            duyurular={k: Event.from_dict(v) for k, v in data["duyurular"].items()},
-            haberler={k: Event.from_dict(v) for k, v in data["haberler"].items()}
+            etkinlikler={k: Event.from_dict(v) for k, v in data.get("etkinlikler", {}).items()},
+            duyurular={k: Event.from_dict(v) for k, v in data.get("duyurular", {}).items()},
+            haberler={k: Event.from_dict(v) for k, v in data.get("haberler", {}).items()}
         )
 
 @dataclass
@@ -53,12 +53,13 @@ class AppState:
     is_admin: bool = False
 
 GITHUB_REPO = "umitcaninz/takvim"
+GITHUB_BRANCH = "main"
 
 def get_github_file(file_path):
-    url = f"https://raw.githubusercontent.com/{GITHUB_REPO}/blob/main/{file_path}"
+    url = f"https://raw.githubusercontent.com/{GITHUB_REPO}/{GITHUB_BRANCH}/{file_path}"
     try:
         response = requests.get(url)
-        response.raise_for_status()  # Hata durumunda istisna fırlatır
+        response.raise_for_status()
         return response.text
     except requests.RequestException as e:
         st.error(f"GitHub'dan dosya alınırken hata oluştu: {str(e)}")
@@ -80,7 +81,7 @@ def load_data() -> DataStore:
             st.error(f"JSON dosyası okunamadı: {str(e)}")
             st.error(f"Dosya içeriği: {content}")
     else:
-        st.warning("GitHub'dan data.json dosyası okunamadı. Boş bir veri yapısı kullanılıyor.")
+        st.warning("GitHub'dan data.json dosyası okunamadı. Varsayılan boş veri yapısı kullanılıyor.")
     return DataStore()
 
 def hash_password(password: str) -> str:
@@ -90,9 +91,37 @@ def verify_password(input_password: str, hashed_password: str) -> bool:
     return hash_password(input_password) == hashed_password
 
 def create_calendar_html(year: int, month: int, data_dict: Dict[str, Event]):
-    # Bu fonksiyon aynı kalacak, değişiklik yok
-    # Fonksiyonun içeriğini buraya ekleyin
-    pass
+    cal = calendar.monthcalendar(year, month)
+    html = f"""
+    <table style="width:100%; border-collapse: collapse;">
+        <tr>
+            <th style="border: 1px solid black; padding: 5px;">Pzt</th>
+            <th style="border: 1px solid black; padding: 5px;">Sal</th>
+            <th style="border: 1px solid black; padding: 5px;">Çar</th>
+            <th style="border: 1px solid black; padding: 5px;">Per</th>
+            <th style="border: 1px solid black; padding: 5px;">Cum</th>
+            <th style="border: 1px solid black; padding: 5px;">Cmt</th>
+            <th style="border: 1px solid black; padding: 5px;">Paz</th>
+        </tr>
+    """
+    
+    for week in cal:
+        html += "<tr>"
+        for day in week:
+            if day == 0:
+                html += '<td style="border: 1px solid black; padding: 5px;"></td>'
+            else:
+                date = datetime.date(year, month, day)
+                date_str = date.isoformat()
+                if date_str in data_dict:
+                    event = data_dict[date_str]
+                    html += f'<td style="border: 1px solid black; padding: 5px; background-color: #ffcccc;">{day}<br>{event.description}</td>'
+                else:
+                    html += f'<td style="border: 1px solid black; padding: 5px;">{day}</td>'
+        html += "</tr>"
+    
+    html += "</table>"
+    return html
 
 def add_item(date: datetime.date, text: str, data_dict: Dict[str, Event]) -> None:
     date_str = date.isoformat()
@@ -122,7 +151,7 @@ def main():
         st.header(choice)
         year = st.selectbox("Yıl", range(datetime.datetime.now().year, datetime.datetime.now().year + 5))
         turkish_months = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
-        month = st.selectbox("Ay", range(1, 13), index=9, format_func=lambda x: turkish_months[x-1])
+        month = st.selectbox("Ay", range(1, 13), format_func=lambda x: turkish_months[x-1])
 
         data_dict = getattr(app_state.data_store, choice.lower())
         calendar_html = create_calendar_html(year, month, data_dict)
