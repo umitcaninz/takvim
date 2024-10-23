@@ -158,7 +158,7 @@ def main():
         st.session_state.app_state = AppState(data_store=load_data())
     app_state = st.session_state.app_state
     st.title("ARAŞTIRMA DEKANLIĞI Analiz Takvimi")
-    menu = ["Analizler", "Etkinlikler"]
+    menu = ["Analizler"]
     choice = st.selectbox("Kategori Seçin", menu, index=0)  
     col1, col2 = st.columns([2, 3])
     with col1:
