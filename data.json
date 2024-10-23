@@ -11,10 +11,10 @@
       "is_new": false
     }
   },
-  "duyurular": {
+  "analizler": {
     "2023-09-10": {
       "date": "2023-09-10",
-      "description": "Yeni duyuru",
+      "description": "Yeni analiz",
       "is_new": true
     },
   "2024-11-10": {
