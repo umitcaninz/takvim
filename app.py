@@ -176,7 +176,7 @@ def main():
                 text = st.text_area("Açıklama")
                 if st.button("Ekle"):
                     add_item(date, text, data_dict)
-    with st.expander(f"Mevcut {choice}", expanded=True):
+        with st.expander(f"Mevcut {choice}", expanded=True):
                 if data_dict:
                     for date_str, event in sorted(data_dict.items(), key=lambda x: x[1].date):
                         date = event.date.strftime('%d.%m.%Y')
