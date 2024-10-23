@@ -157,7 +157,7 @@ def main():
     if 'app_state' not in st.session_state:
         st.session_state.app_state = AppState(data_store=load_data())
     app_state = st.session_state.app_state
-    st.title("ARDEK Etkinlikler, analizler ve Haberler Takvimi")
+    st.title("ARAŞTIRMA DEKANLIĞI Analiz Takvimi")
     menu = ["Analizler", "Etkinlikler"]
     choice = st.selectbox("Kategori Seçin", menu, index=0)  
     col1, col2 = st.columns([2, 3])
