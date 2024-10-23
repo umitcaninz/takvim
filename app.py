@@ -165,7 +165,7 @@ def main():
         st.header(choice)
         year = st.selectbox("Yıl", range(datetime.datetime.now().year + 1, datetime.datetime.now().year + 5))
         turkish_months = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
-        month = st.selectbox("Ay", range(1, 13), index=9, format_func=lambda x: turkish_months[x-1])
+        month = st.selectbox("Ay", range(1, 13), index=1, format_func=lambda x: turkish_months[x-1])
         data_dict = getattr(app_state.data_store, choice.lower())
         calendar_html = create_calendar_html(year, month, data_dict)
         st.components.v1.html(calendar_html, height=500, scrolling=True)
