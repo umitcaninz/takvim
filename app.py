@@ -176,29 +176,18 @@ def main():
                 text = st.text_area("Açıklama")
                 if st.button("Ekle"):
                     add_item(date, text, data_dict)
-        with st.expander(f"Mevcut {choice}", expanded=True):
-            if data_dict:
-                for date_str, event in sorted(data_dict.items(), key=lambda x: x[1]["date"]):
-                    event_month = event["date"].month  # Olayın ayı
-                    
-                    # Kullanıcı bir ay seçmişse ve bu ay, olayın ayıyla eşleşmiyorsa atla
-                    if selected_month != "Tüm Aylar" and event_month != ay_no[selected_month]:
-                        continue
-        
-                    # Tarih ve metin rengi
-                    date = event["date"].strftime('%d.%m.%Y')
-                    text_color = "#FF4B4B" if event["is_new"] else "#000000"
-                    
-                    # Olay bilgilerini göster
-                    st.markdown(f"<h4 style='color: {text_color};'>{date}</h4>", unsafe_allow_html=True)
-                    st.markdown(f"<p style='color: {text_color};'>{event['description']}</p>", unsafe_allow_html=True)
-                    
-                    st.markdown("---")
-                    
-                    # Yeni olay işaretini sıfırla
-                    event["is_new"] = False
-            else:
-                st.info(f"Henüz {choice.lower()} eklenmemiş.")
+    with st.expander(f"Mevcut {choice}", expanded=True):
+                if data_dict:
+                    for date_str, event in sorted(data_dict.items(), key=lambda x: x[1].date):
+                        date = event.date.strftime('%d.%m.%Y')
+                        text_color = "#FF4B4B" if event.is_new else "#000000"
+                        st.markdown(f"<h4 style='color: {text_color};'>{date}</h4>", unsafe_allow_html=True)
+                        st.markdown(f"<p style='color: {text_color};'>{event.description}</p>", unsafe_allow_html=True)
+                        
+                        st.markdown("---")
+                        event.is_new = False
+                else:
+                    st.info(f"Henüz {choice.lower()} eklenmemiş.")
     if not app_state.is_admin:
         st.sidebar.info("İçerik eklemek veya düzenlemek için admin girişi yapmalısınız.")
 
