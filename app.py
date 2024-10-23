@@ -28,7 +28,7 @@ class Event:
 @dataclass
 class DataStore:
     etkinlikler: Dict[str, Event] = field(default_factory=dict)
-    analizler: Dict[str, Event] = field(default_factory=dict)if
+    analizler: Dict[str, Event] = field(default_factory=dict)
     haberler: Dict[str, Event] = field(default_factory=dict)
     def to_dict(self):
         return {
