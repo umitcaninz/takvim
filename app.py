@@ -28,19 +28,19 @@ class Event:
 @dataclass
 class DataStore:
     etkinlikler: Dict[str, Event] = field(default_factory=dict)
-    duyurular: Dict[str, Event] = field(default_factory=dict)
+    analizler: Dict[str, Event] = field(default_factory=dict)
     haberler: Dict[str, Event] = field(default_factory=dict)
     def to_dict(self):
         return {
             "etkinlikler": {k: v.to_dict() for k, v in self.etkinlikler.items()},
-            "duyurular": {k: v.to_dict() for k, v in self.duyurular.items()},
+            "analizler": {k: v.to_dict() for k, v in self.analizler.items()},
             "haberler": {k: v.to_dict() for k, v in self.haberler.items()}
         }
     @classmethod
     def from_dict(cls, data):
         return cls(
             etkinlikler={k: Event.from_dict(v) for k, v in data["etkinlikler"].items()},
-            duyurular={k: Event.from_dict(v) for k, v in data["duyurular"].items()},
+            analizler={k: Event.from_dict(v) for k, v in data["analizler"].items()},
             haberler={k: Event.from_dict(v) for k, v in data["haberler"].items()}
         )
 @dataclass
@@ -157,8 +157,8 @@ def main():
     if 'app_state' not in st.session_state:
         st.session_state.app_state = AppState(data_store=load_data())
     app_state = st.session_state.app_state
-    st.title("ARDEK Etkinlikler, Duyurular ve Haberler Takvimi")
-    menu = ["Etkinlikler", "Duyurular", "Haberler"]
+    st.title("ARDEK Etkinlikler, analizler ve Haberler Takvimi")
+    menu = ["Etkinlikler", "analizler", "Haberler"]
     choice = st.selectbox("Kategori Seçin", menu, index=0)  
     col1, col2 = st.columns([2, 3])
     with col1:
