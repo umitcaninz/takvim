@@ -2,12 +2,12 @@
   "etkinlikler": {
     "2023-09-01": {
       "date": "2023-09-01",
-      "description": "Yeni etkinlik",
+      "description": "Etkinlik bulunmamaktadır.",
       "is_new": true
     },
     "2023-09-15": {
       "date": "2023-09-15",
-      "description": "Diğer etkinlik",
+      "description": "Etkinlik bulunmamaktadır.",
       "is_new": false
     }
   },
