@@ -157,6 +157,28 @@
       "description": "Öğretim Elemanı Performans Analizi için Veri Çekilmesi (Avesis) Atölye Çalışmaları",
       "is_new": true
     },
+  
+    "2025-07-02": {
+      "date": "2025-07-02",
+      "description": "Enstitü Performans Analizi İçin Enstitülerden Veri Talebi (e-beyas)",
+      "is_new": true
+    },
+
+  
+    "2025-07-16": {
+      "date": "2025-07-16",
+      "description": "Enstitü Performans Analizi İçin Enstitülerden Verilerin Gelmesi (e-beyas)",
+      "is_new": true
+    },
+
+    
+    "2025-07-23": {
+      "date": "2025-07-23",
+      "description": "Enstitü Performans Raporunun İlan Edilmesi:",
+      "is_new": true
+    },
+
+  
     "2025-11-27": {
       "date": "2025-11-27",
       "description": "Öğretim Elemanı Performans Analizi Raporunun İlan Edilmesi",
