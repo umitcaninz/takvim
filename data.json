@@ -12,23 +12,23 @@
     }
   },
 "analizler": {
-    "2025-01-02": {
-      "date": "2025-01-02",
-      "description": "Fakülte Performans Analizi için veri alınması (Avesis)",
+    "2025-01-27": {
+      "date": "2025-01-27",
+      "description": "Enstitü aksiyon raporlarının istenmesi",
       "is_new": true
     },
-    "2025-01-16": {
-      "date": "2025-01-16",
-      "description": "Fakülte Performans Analizlerinin kontrol için akademik birimlere gönderilmesi",
+    "2025-02-03": {
+      "date": "2025-02-03",
+      "description": "Enstitü aksiyon raporlarının toplanması",
       "is_new": true
     },
-    "2025-01-23": {
-      "date": "2025-01-23",
+    "2025-02-06": {
+      "date": "2025-02-06",
       "description": "Fakültelerden geri bildirimlerin alınması",
       "is_new": true
     },
-    "2025-01-30": {
-      "date": "2025-01-30",
+    "2025-02-13": {
+      "date": "2025-02-13",
       "description": "Fakülte performans raporunun ilan edilmesi",
       "is_new": true
     },
@@ -44,148 +44,109 @@
     },
     "2025-02-20": {
       "date": "2025-02-20",
-      "description": "MYO'lardan geri bildirimlerin alınması",
+      "description": "Fakülte performans analiz raporu",
       "is_new": true
     },
     "2025-02-27": {
       "date": "2025-02-27",
-      "description": "MYO performans raporunun ilan edilmesi",
+      "description": "Öğretim üyesi Yayın ve Yazarlık Analiz Raporu",
       "is_new": true
     },
-    "2025-03-04": {
-      "date": "2025-03-04",
-      "description": "Araştırma ve Uygulama Merkezleri Analizi için veri alınması",
+    "2025-03-06": {
+      "date": "2025-03-06",
+      "description": "Ensititü aksiyon raporlarının yayınlanması",
       "is_new": true
     },
-    "2025-03-20": {
-      "date": "2025-03-20",
-      "description": "Araştırma ve Uygulama Merkezleri Analizlerinin kontrol için akademik birimlere gönderilmesi",
-      "is_new": true
-    },
-    "2025-03-27": {
-      "date": "2025-03-27",
-      "description": "Araştırma ve Uygulama Merkezlerinden geri bildirim alınması",
-      "is_new": true
-    },
-    "2025-04-03": {
-      "date": "2025-04-03",
-      "description": "Araştırma ve Uygulama Merkezleri performans raporunun ilan edilmesi",
-      "is_new": true
-    },
-    "2025-04-15": {
-      "date": "2025-04-15",
-      "description": "Araştırma Dekanlığı Yönetim Kurulu Toplantısı, Araştırma Projeleri Destek Ofisi Yürütme Kurulu Toplantısı",
+    "2025-04-17": {
+      "date": "2025-04-17",
+      "description": "Yönetim Kurulu Toplantısı (ARDEK-PDO)",
       "is_new": true
     },
     "2025-05-02": {
       "date": "2025-05-02",
-      "description": "Alan Bazlı Göstergelerin Karşılaştırmalı Analizi İçin Veri Çekilmesi (INCITES)",
+      "description": "Alan bazlı gösterge analizi için veri çekilmesi ve analiz",
       "is_new": true
     },
-    "2025-05-30": {
-      "date": "2025-05-30",
-      "description": "Alan Bazlı Göstergelerin Karşılaştırmalı Analizi Raporunun İlan Edilmesi",
+    "2025-05-29": {
+      "date": "2025-05-29",
+      "description": "Alan bazlı gösterge analiz raporu",
       "is_new": true
     },
-    "2025-06-04": {
-      "date": "2025-06-04",
-      "description": "Öğretim Elemanı Performans Analizi için Veri Çekilmesi (Avesis)",
-      "is_new": true
-    },
-    "2025-06-26": {
-      "date": "2025-06-26",
-      "description": "Öğretim Elemanı Performans Analizi Raporunun İlan Edilmesi",
+    "2025-06-02": {
+      "date": "2025-06-02",
+      "description": "Enstitü performans analizi verilerinin çekilmesi",
       "is_new": true
     },
     "2025-07-01": {
       "date": "2025-07-01",
-      "description": "Akademik birimlerden fakülte aksiyon raporunun talep edilmesi",
+      "description": "ARUY-MYO Aksiyon Raporu istenmesi",
+      "is_new": true
+    },
+    "2025-07-03": {
+      "date": "205-07-03",
+      "description": "Alan Bazlı Gösterge Analizi Raporu",
+      "is_new": true
+    },
+    "2025-07-14": {
+      "date": "2025-07-14",
+      "description": "Aksiyon Raporunun toplanması",
       "is_new": true
     },
     "2025-07-31": {
       "date": "2025-07-31",
-      "description": "Fakülte aksiyon raporlarının ilan edilmesi",
+      "description": "Aksiyon Raporunun açıklanması",
       "is_new": true
     },
-    "2025-08-05": {
-      "date": "2025-08-05",
-      "description": "Akademik birimlerden MYO aksiyon raporunun talep edilmesi",
+    "2025-08-04": {
+      "date": "2025-08-04",
+      "description": "YKS Analizi için veri toplanması",
       "is_new": true
     },
-    "2025-08-28": {
-      "date": "2025-08-28",
-      "description": "MYO aksiyon raporlarının ilan edilmesi",
+    "2025-08-21": {
+      "date": "2025-08-21",
+      "description": "YKS Analizi",
       "is_new": true
     },
     "2025-09-01": {
       "date": "2025-09-01",
-      "description": "Simülasyon analizi için veri çekilmesi",
-      "is_new": true
-    },
-    "2025-09-02": {
-      "date": "2025-09-02",
-      "description": "Akademik birimlerden Araştırma ve Uygulama Merkezleri aksiyon raporunun talep edilmesi",
-      "is_new": true
-    },
-    "2025-09-15": {
-      "date": "2025-09-15",
-      "description": "YKS Analiz Raporunun İlan Edilmesi",
+      "description": "Simülasyon için veri toplanması",
       "is_new": true
     },
     "2025-09-25": {
       "date": "2025-09-25",
-      "description": "Araştırma ve Uygulama Merkezlerinden aksiyon raporlarının ilan edilmesi",
+      "description": "Simülasyon raporunun ilanı",
       "is_new": true
     },
-    "2025-09-26": {
-      "date": "2025-09-26",
-      "description": "Simülasyon analizi raporunun ilan edilmesi",
+    "2025-10-16": {
+      "date": "2025-10-16",
+      "description": "Yönetim Kurulu Toplantısı",
       "is_new": true
     },
-    "2025-10-14": {
-      "date": "2025-10-14",
-      "description": "Araştırma Dekanlığı Yönetim Kurulu Toplantısı, Araştırma Projeleri Destek Ofisi Yürütme Kurulu Toplantısı",
+    "2025-11-03": {
+      "date": "2025-11-03",
+      "description": "İdari personel beceri anketinin birimlere gönderilmesi",
       "is_new": true
     },
-    "2025-10-30": {
-      "date": "2025-10-30",
-      "description": "ARDEK İzleme Değerlendirme",
+    "2025-11-11": {
+      "date": "2025-11-11",
+      "description": "İdari personel beceri anketinin analzleri",
       "is_new": true
     },
-    "2025-11-06": {
-      "date": "2025-11-06",
-      "description": "Öğretim Elemanı Performans Analizi için Veri Çekilmesi (Avesis) Atölye Çalışmaları",
+    "2025-11-24": {
+      "date": "2025-11-24",
+      "description": "Öğretim üyesi yazarlık ve yayın analizi için veri çekilmesi",
       "is_new": true
     },
-  
-    "2025-07-02": {
-      "date": "2025-07-02",
-      "description": "Enstitü Performans Analizi İçin Enstitülerden Veri Talebi (e-beyas)",
+    "2025-12-01": {
+      "date": "2025-12-01",
+      "description": "Fakülte performans analizleri için veri toplanması",
       "is_new": true
     },
-
-  
-    "2025-07-16": {
-      "date": "2025-07-16",
-      "description": "Enstitü Performans Analizi İçin Enstitülerden Verilerin Gelmesi (e-beyas)",
+    "2025-12-22": {
+      "date": "2025-12-22",
+      "description": "Fakülte performans analizi tamamlanması",
       "is_new": true
-    },
-
     
-    "2025-07-23": {
-      "date": "2025-07-23",
-      "description": "Enstitü Performans Raporunun İlan Edilmesi:",
-      "is_new": true
-    },
-
-  
-    "2025-11-27": {
-      "date": "2025-11-27",
-      "description": "Öğretim Elemanı Performans Analizi Raporunun İlan Edilmesi",
-      "is_new": true
-
-    
-  }
 
     
   },
