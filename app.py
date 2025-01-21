@@ -163,7 +163,7 @@ def main():
     col1, col2 = st.columns([2, 3])
     with col1:
         st.header(choice)
-        year = st.selectbox("Yıl", range(datetime.datetime.now().year + 1, datetime.datetime.now().year + 5))
+        year = st.selectbox("Yıl", range(datetime.datetime.now().year , datetime.datetime.now().year + 5))
         turkish_months = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
         month = st.selectbox("Ay", range(1, 13), index=0, format_func=lambda x: turkish_months[x-1])
         data_dict = getattr(app_state.data_store, choice.lower())
