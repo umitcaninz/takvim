@@ -11,7 +11,7 @@
       "is_new": false
     }
   },
-"analizler": {
+  "analizler": {
     "2025-01-27": {
       "date": "2025-01-27",
       "description": "Enstitü aksiyon raporlarının istenmesi",
@@ -146,6 +146,7 @@
       "date": "2025-12-22",
       "description": "Fakülte performans analizi tamamlanması",
       "is_new": true
+    }
   },
   "haberler": {}
 }
