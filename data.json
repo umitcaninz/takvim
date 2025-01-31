@@ -12,48 +12,46 @@
     }
   },
   "analizler": {
-    "2025-01-27": {
-      "date": "2025-01-27",
-      "description": "Enstitü Aksiyon Raporlarının akademik birimlerden talep edilmesi",
-      "is_new": true
-    },
-    "2025-02-03": {
-      "date": "2025-02-03",
-      "description": "Enstitü Aksiyon Raporlarının akademik birimler tarafından Araştırma Dekanlığı'na iletilmesi için son gün",
-      "is_new": true
-    },
-    
-    "2025-03-06": {
-      "date": "2025-03-06",
-      "description": "MYO Performans Analizi için veri alınması (Avesis)",
-      "is_new": true
-    },
+
+
 
 
     "2025-02-13": {
       "date": "2025-02-13",
       "description": "Fakülte Araştırma Performansı analiz raporunun (KPS-KLT-ISB Analizi) yayınlanması",
       "is_new": true
- },
-
-    "2025-03-20": {
-      "date": "2025-03-20",
-      "description": "MYO Performans Analizlerinin kontrol için akademik birimlere gönderilmesi",
-      "is_new": true
-    },
-
-      
-   
+     },
     "2025-02-27": {
       "date": "2025-02-27",
       "description": "Öğretim Üyesi Yayın ve Yazarlık Analiz Raporu",
       "is_new": true
     },
-    "2025-03-05": {
-      "date": "2025-03-05",
-      "description": "Ensititü Aksiyon Raporlarının yayınlanması",
+
+        
+    "2025-03-06": {
+      "date": "2025-03-06",
+      "description": "MYO Performans Analizi için veri alınması (Avesis)",
       "is_new": true
     },
+    "2025-03-17": {
+      "date": "2025-03-17",
+      "description": "MYO Performans Analizlerinin kontrol için akademik birimlere gönderilmesi",
+      "is_new": true
+    },
+    "2025-03-21": {
+      "date": "2025-03-21",
+      "description": "MYO'lardan geri bildirimlerin alınması için son gün",
+      "is_new": true
+    },
+      
+    "2025-03-27": {
+      "date": "2025-03-27",
+      "description": "MYO Performans Analiz Raporunun yayınlanması",
+      "is_new": true
+    },   
+
+
+
     "2025-04-17": {
       "date": "2025-04-17",
       "description": "Yönetim ve Yürütme Kurulu Toplantısı (ARDEK-PDO)",
@@ -74,6 +72,22 @@
       "description": "Enstitü Performans Analizi verilerinin akademik birimlerden talep edilmesi",
       "is_new": true
     },
+
+  
+    "2025-06-12": {
+      "date": "2025-06-12",
+      "description": "Enstitü Performans Analizi verilerinin akademik birimlerden Araştırma Dekanlığı'na iletilmesi için son gün",
+      "is_new": true
+    },
+
+    "2025-06-27": {
+      "date": "2025-06-27",
+      "description": "Enstitü Performans Analiz Raporunun yayınlanması",
+      "is_new": true
+    },
+
+
+    
     "2025-07-01": {
       "date": "2025-07-01",
       "description": "Araştırma ve Uygulama Merkezleri ile Meslek Yüksekokullarından Aksiyon Raporlarının talep edilmesi",
@@ -110,22 +124,45 @@
       "description": "Simülasyon raporunun ilan edilmesi",
       "is_new": true
     },
+
+    "2025-10-10": {
+      "date": "2025-10-10",
+      "description": "Araştırma Uygulama Merkezleri Performans Analizi için veri talep edilmesi (İlgili Birimler, AVESİS)",
+      "is_new": true
+    },
+
+
+
+
+    
     "2025-10-16": {
       "date": "2025-10-16",
       "description": "Yönetim ve Yürütme Kurulu Toplantısı(ARDEK-PDO)",
       "is_new": true
     },
+
+
+    "2025-10-17": {
+      "date": "2025-10-17",
+      "description": "Araştırma Uygulama Merkezleri Performans Analizi için ilgili birimlerden Araştırma Dekanlığı'na veri iletilmesi için son gün",
+      "is_new": true
+    },
+
+    "2025-10-24": {
+      "date": "2025-10-24",
+      "description": "Araştırma Uygulama Merkezleri Performans Analizi Raporunun yayınlanması",
+      "is_new": true
+    },
+
+    
+    
     "2025-11-03": {
       "date": "2025-11-03",
       "description": "İdari Personel Beceri Anketinin ilgili birimlere gönderilmesi",
       "is_new": true
     },
-    "2025-11-11": {
-      "date": "2025-11-11",
-      "description": "İdari Personel Beceri Anketine katılım için son gün",
-      "is_new": true
-    },
-      "2025-11-19": {
+
+      "2025-11-20": {
       "date": "2025-11-20",
       "description": "İdari Personel Beceri Anketine katılım için son gün",
       "is_new": true
