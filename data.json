@@ -37,6 +37,10 @@
       "description": "MYO ve AR-UY Merkezlerinden 6 Aylık Aksiyon Raporlarının Talep Edilmesi (e-BEYAS)",
       "is_new": true
     },
+
+
+
+  
     "2025-03-14": {
       "date": "2025-03-14",
       "description": "MYO'lardan ve AR-UY Merkezlerinden Aksiyon Raporlarının Araştırma Dekanlığı'na İletilmesi için SON GÜN",
@@ -77,6 +81,8 @@
       "description": "Enstitü Performans Analizi Raporunun Yayınlanması",
       "is_new": true
     },
+
+
   
     "2025-05-08": {
       "date": "2025-05-08",
@@ -84,6 +90,22 @@
       "is_new": true
     },
 
+    "2025-06-02": {
+      "date": "2025-03-04",
+      "description": "Simülasyon ve Karşılaştırma Çalışmalarının Başlaması ",
+      "is_new": true
+    },
+  
+    "2025-07-03": {
+      "date": "2025-03-04",
+      "description": "Simülasyon ve Karşılaştırma Çalışma Raporlarının Yayınlaması ",
+      "is_new": true
+    },
+
+
+  
+
+  
   
     "2025-08-01": {
       "date": "2025-08-01",
