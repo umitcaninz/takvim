@@ -14,12 +14,12 @@
 "analizler": {
     "2025-01-01": {
       "date": "2025-01-01",
-      "description": "Dergi Etki Faktörü 3 ve Üzeri olan Yayınların Listelenmesi",
+      "description": "Dergi Etki Faktörü 3 ve Üzeri Olan Yayınların Listelenmesi",
       "is_new": true
     },
     "2025-01-31": {
       "date": "2025-01-31",
-      "description": "Etki Faktörü Yüksek Yayınların Görünürlüğünün Sağlanması (8 Ay süre ile)",
+      "description": "Etki Faktörü 3 ve Üzeri Olan Yayınların Görünürlüğünün Sağlanması (8 Ay süre ile)",
       "is_new": true
     },
     "2025-02-20": {
