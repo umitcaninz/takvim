@@ -82,11 +82,22 @@
       "description": "Alan Bazlı Göstergelerin Karşılaştırmalı Analizi Raporunun Yayınlanması",
       "is_new": true
     },
-    "2025-09-01": {
-      "date": "2025-09-01",
-      "description": "Fakültelerden 6 Aylık Aksiyon Raporunun Talep Edilmesi (e-BEYAS)",
+    "2025-08-31": {
+      "date": "2025-08-31",
+      "description": "YKS Analizinin Yapılarak Raporun Yayınlanması (ÖSYM Takvimine Göre)",
       "is_new": true
     },
+
+  
+  
+    "2025-09-12": {
+      "date": "2025-09-12",
+      "description": "Fakültelerin Aksiyon Raporlarını Araştırma Dekanlığı'na İletmesi için SON GÜN",
+      "is_new": true
+    },
+
+
+  
     "2025-09-12": {
       "date": "2025-09-12",
       "description": "Fakültelerin Aksiyon Raporlarını Araştırma Dekanlığı'na İletmesi için SON GÜN",
