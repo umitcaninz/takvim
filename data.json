@@ -153,7 +153,11 @@
       "description": "Enstitülerden Aksiyon Raporlarının Araştırma Dekanlığı'na İletilmesi için SON GÜN",
       "is_new": true
     },
-
+    "2025-11-01": {
+      "date": "2025-11-01",
+      "description": "AR-UY Merkezlerinden ve MYO'lardan Performans Analizi için Veri Talep Edilmesi (E-BEYAS)",
+      "is_new": true
+    },
 
   
     "2025-11-13": {
@@ -167,17 +171,11 @@
       "is_new": true
     },
 
-  "2025-12-30": {
-      "date": "2025-12-30",
-      "description": "Öğretim Üyesi Yayın ve Yazarlık Analiz Raporunun Yayınlanması",
-      "is_new": true
-    },
 
-  
   
     "2025-12-31": {
       "date": "2025-12-31",
-      "description": "Fakülte Performans Analizinin Yayınlanması",
+      "description": "Öğretim Üyesi Yayın ve Yazarlık Analizi ~~ Fakülte  ~~ MYO ~~ AR-UY Merkezleri Performans Analizlerinin Yayınlanması (2026 Ocak Ayı İçinde Yayınlanacaktır.)",
       "is_new": true
     }
 
