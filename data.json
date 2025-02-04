@@ -155,7 +155,13 @@
     },
     "2025-11-01": {
       "date": "2025-11-01",
-      "description": "AR-UY Merkezlerinden ve MYO'lardan Performans Analizi için Veri Talep Edilmesi (E-BEYAS)",
+      "description": "AR-UY Merkezlerinden Performans Analizi için Veri Talep Edilmesi (E-BEYAS)",
+      "is_new": true
+    },
+
+      "2025-11-02": {
+      "date": "2025-11-02",
+      "description": "MYO'lardan Performans Analizi için Veri Çekilmesi (AVESİS)",
       "is_new": true
     },
 
