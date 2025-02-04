@@ -69,7 +69,7 @@
     },
     "2025-04-18": {
       "date": "2025-04-18",
-      "description": "Enstitülerin Verilerini Araştırma Dekanlığı'na İletilmesi için Son Gün",
+      "description": "Enstitülerin Verilerini Araştırma Dekanlığı'na İletilmesi için SON GÜN",
       "is_new": true
     },
     "2025-04-30": {
@@ -84,12 +84,12 @@
     },
     "2025-09-01": {
       "date": "2025-09-01",
-      "description": "Aksiyon Raporlarının Fakültelerden Talep Edilmesi",
+      "description": "Fakültelerden 6 Aylık Aksiyon Raporunun Talep Edilmesi (e-BEYAS)",
       "is_new": true
     },
     "2025-09-12": {
       "date": "2025-09-12",
-      "description": "Fakültelerden aksiyon raporlarının Araştırma Dekanlığı'na İletilmesi için Son Gün",
+      "description": "Fakültelerin Aksiyon Raporlarını Araştırma Dekanlığı'na İletmesi için SON GÜN",
       "is_new": true
     },
     "2025-09-27": {
@@ -114,7 +114,7 @@
     },
     "2025-10-31": {
       "date": "2025-10-31",
-      "description": "Enstitülerden aksiyon raporlarının Araştırma Dekanlığı'na İletilmesi için Son Gün",
+      "description": "Enstitülerden aksiyon raporlarının Araştırma Dekanlığı'na İletilmesi için SON GÜN",
       "is_new": true
     },
     "2025-11-13": {
