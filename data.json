@@ -149,13 +149,17 @@
       "is_new": true
     },
 
-    "2025-09-18": {
-      "date": "2025-09-18",
+    "2025-09-15": {
+      "date": "2025-09-15",
       "description": "Enstitülerden 6 Aylık Aksiyon Raporunun Talep Edilmesi",
       "is_new": true
     },
 
-
+    "2025-09-26": {
+      "date": "2025-09-26",
+      "description": "Enstitülerden Aksiyon Raporlarının Araştırma Dekanlığı'na İletilmesi için SON GÜN",
+      "is_new": true
+    },
   
 
     "2025-10-02": {
@@ -163,7 +167,16 @@
       "description": "İdari Personel Beceri Anketinin İdari Bilimlere Gönderilmesi",
       "is_new": true
     },
-    "2025-10-17": {
+
+
+    "2025-10-15": {
+      "date": "2025-10-15",
+      "description": "Enstitü Aksiyon Raporlarının Yayınlanması",
+      "is_new": true
+    },
+  
+  
+  "2025-10-17": {
       "date": "2025-10-17",
       "description": "İdari Personel Beceri Anketine Katılım İçin SON GÜN",
       "is_new": true
@@ -176,22 +189,10 @@
     },
 
   
-
   
-    "2025-10-20": {
-      "date": "2025-10-20",
-      "description": "Enstitülerden 6 Aylık Aksiyon Raporlarının Talep Edilmesi",
-      "is_new": true
-    },
-
 
 
   
-    "2025-10-31": {
-      "date": "2025-10-31",
-      "description": "Enstitülerden Aksiyon Raporlarının Araştırma Dekanlığı'na İletilmesi için SON GÜN",
-      "is_new": true
-    },
     "2025-11-01": {
       "date": "2025-11-01",
       "description": "AR-UY Merkezlerinden Performans Analizi için Veri Talep Edilmesi (E-BEYAS)",
@@ -205,11 +206,7 @@
     },
 
   
-    "2025-11-13": {
-      "date": "2025-11-13",
-      "description": "Enstitü Aksiyon Raporlarının Yayınlanması",
-      "is_new": true
-    },
+
     "2025-11-24": {
       "date": "2025-11-24",
       "description": "Öğretim Üyesi Yayın ve Yazarlık Analizi için Verilerin Çekilmesi (AVESİS) ~~ Fakülte Performans Analizi için Veri Çekilmesi",
