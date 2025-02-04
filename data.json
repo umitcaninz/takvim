@@ -77,11 +77,22 @@
       "description": "Enstitü Performans Analizi Raporunun Yayınlanması",
       "is_new": true
     },
+  
     "2025-05-08": {
       "date": "2025-05-08",
       "description": "Alan Bazlı Göstergelerin Karşılaştırmalı Analizi Raporunun Yayınlanması",
       "is_new": true
     },
+
+  
+    "2025-08-01": {
+      "date": "2025-08-01",
+      "description": "YKS Analizinin Yapılması (ÖSYM Takvimine Göre)",
+      "is_new": true
+    },
+
+
+  
     "2025-08-31": {
       "date": "2025-08-31",
       "description": "YKS Analizinin Yapılarak Raporun Yayınlanması (ÖSYM Takvimine Göre)",
