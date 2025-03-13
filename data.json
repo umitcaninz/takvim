@@ -29,7 +29,7 @@
     },
     "2025-03-12": {
       "date": "2025-03-12",
-      "description": "Öğretim Üyesi Yazarlık ve Yayın Analizi Raporunun Yayınlanması (2024 Yılı Raporu)",
+      "description": "Öğretim Üyesi Yazarlık ve Yayın Analizi için Güncel Verilerin Avesisten Çekilmesi (Doğrulanmış Veri)",
       "is_new": true
     },
     "2025-03-03": {
@@ -81,6 +81,15 @@
       "description": "MYO Aksiyon Raporlarının Yayınlanması",
       "is_new": true
     },
+
+
+      "2025-04-15": {
+      "date": "2025-04-15",
+      "description": "Öğretim Üyesi Yazarlık ve Yayın Analizi Raporunun Yayınlanması (2024 Raporu)",
+      "is_new": true
+    },
+  
+  
 
     "2025-04-17": {
       "date": "2025-04-17",
