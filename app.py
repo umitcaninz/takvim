@@ -154,6 +154,7 @@ def add_item(date: datetime.date, text: str, data_dict: Dict[str, Event]) -> Non
 
 def main():
     st.set_page_config(page_title="ARDEK Takvimi", layout="wide", initial_sidebar_state="collapsed")
+    st.markdown("Veri toplama süreçlerinde yaşanabilen gecikmelere göre analiz takviminde aylık değişiklikler olabilmektedir.")
     if 'app_state' not in st.session_state:
         st.session_state.app_state = AppState(data_store=load_data())
     app_state = st.session_state.app_state
